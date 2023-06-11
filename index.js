@@ -1,27 +1,42 @@
 const inquirer = require("inquirer");
-const shapes = require("./lib/shapes");
+// const { Logo } = require("./lib/logo");
+const { Circle, Triangle, Square, Logo } = require("./lib/render");
 
-inquirer
-  .prompt([
-    {
-      type: "input",
-      name: "radius",
-      message: "Enter the radius of the circle:",
-    },
-    {
-      type: "input",
-      name: "color",
-      message: "Enter the color of the circle:",
-    },
-  ])
-  .then((answers) => {
-    const radius = answers.radius;
-    const color = answers.color;
+function init() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "shape",
+        message: "What shape would you like to create?",
+        choices: ["Circle", "Triangle", "Square"]
+      },
+      {
+        type: "input",
+        name: "shapeColor",
+        message: "Enter a hex value for your shape color."
+      },
+      {
+        type: "input",
+        name: "text",
+        message: "Enter text for your logo (limit 3 characters)."
+      },
+      {
+        type: "input",
+        name: "textColor",
+        message: "Enter a hex value for your text color."
+      },
+    ])
+    .then((answers) => {
+      let text;
+      if (answers.shape === "Circle") {
+        text = `<text x="50" y="55" text-anchor="middle" fill="${answers.textColor}" font-size="16" font-family="Arial">${answers.text}</text>`;
+      } else {
+        text = `<text x="50" y="60" text-anchor="middle" fill="${answers.textColor}" font-size="16" font-family="Arial">${answers.text}</text>`;
+      }
+      logo = new Logo(text, answers.shapeColor, answers.shape);
+      console.log(logo.construct());
+    });
+}
 
-    const myCircle = new Circle(radius, color);
-    const svgString = myCircle.render();
-    console.log(svgString);
-  })
-  .catch((error) => {
-    console.error("Error occurred:", error);
-  });
+init();
