@@ -1,27 +1,30 @@
 const inquirer = require("inquirer");
 const shapes = require("./lib/shapes");
 
-inquirer
-  .prompt([
+function init() {
+  inquirer.prompt([
     {
-      type: "input",
-      name: "radius",
-      message: "Enter the radius of the circle:",
+      type: "list",
+      name: "shape",
+      message: "What shape would you like to create?",
+      choices: ["Circle", "Triangle", "Square"]
     },
     {
       type: "input",
-      name: "color",
-      message: "Enter the color of the circle:",
+      name: "shapeColor",
+      message: "Enter a hex value for your shape color.",
     },
-  ])
-  .then((answers) => {
-    const radius = answers.radius;
-    const color = answers.color;
+    {
+      type: "input",
+      name: "text",
+      message: "Enter text for your logo (limit 3 characters).",
+    },
+    {
+      type: "input",
+      name: "textColor",
+      message: "Enter a hex value for your text color.",
+    }
+  ]).then(answers => {
 
-    const myCircle = new Circle(radius, color);
-    const svgString = myCircle.render();
-    console.log(svgString);
   })
-  .catch((error) => {
-    console.error("Error occurred:", error);
-  });
+}
