@@ -1,32 +1,27 @@
-const inquirer = require('inquirer');
+const inquirer = require("inquirer");
+const shapes = require("./lib/shapes");
 
-const questions = [
-  "Please select a shape",
-  "Please enter your initials",
-  "Please enter a hex code for your logo"
-];
-
-function init() {
-  inquirer.promt([
+inquirer
+  .prompt([
     {
-      type: 'list',
-      message: questions[0],
-      name: 'shape',
-      choices: ['Square', 'Circle', 'Triangle']
+      type: "input",
+      name: "radius",
+      message: "Enter the radius of the circle:",
     },
     {
-      type: 'input',
-      message: questions[1],
-      name: 'initials',
+      type: "input",
+      name: "color",
+      message: "Enter the color of the circle:",
     },
-    {
-      type: 'input',
-      message: questions[2],
-      name: 'color',
-    }
   ])
-}
+  .then((answers) => {
+    const radius = answers.radius;
+    const color = answers.color;
 
-init();
-
-
+    const myCircle = new Circle(radius, color);
+    const svgString = myCircle.render();
+    console.log(svgString);
+  })
+  .catch((error) => {
+    console.error("Error occurred:", error);
+  });
