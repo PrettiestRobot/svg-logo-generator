@@ -1,25 +1,11 @@
 # svg-logo-generator
 
-## Table of Contents
+## Decscription
 
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [How to Contribute](#contribute)
-- [Contact](#contact)
+A simple terminal based logo generator.
 
-## Description <a name="description"></a>
+https://drive.google.com/file/d/17JOGscL1T01a5T4bF2Bh80q9je61OSff/view
 
-A simple node apllication to generate a readme.md through terminal prompts.
+## Instructions
 
-## Installation <a name="installation"></a>
-
-node and npm inquirer required for app to function.
-
-## Usage instructions <a name="usage"></a>
-
-Make sure node and the inquirer npm are installed. open a terminal and navigate to the applications location. Run the command node index.js in the terminal. Follow the terminal Prompts. Readme will be saved in output folder.
-
-Here is a step by step video showing how to use the app:
-https://drive.google.com/file/d/1JgI78MyRlZAma0gcL2vudpmXSt67dokN/view
+Start program by typing node index.js into the terminal. Follow the terminal prompts. When prompted to input a color use hexidecimal color codes including the # or the app will throw an error. Once all prompts have been completed the svg file will be saved in the examples folder.
